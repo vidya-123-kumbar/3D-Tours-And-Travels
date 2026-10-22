@@ -1,0 +1,387 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Brand Color Tokens */
+    --crimson: #FF7A00;
+    --crimson-dark: #CC5F00;
+    --crimson-light: #FF9B3D;
+    --charcoal: #1A1A2E;
+    --charcoal-2: #16213E;
+    --silver: #C8C8C8;
+    --white: #FFFFFF;
+    --off-white: #F8F7F4;
+    --gray-light: #F0EFEC;
+    --text-dark: #1A1A1A;
+    --text-mid: #444444;
+    --text-light: #888888;
+    --shadow-strong: 0 20px 60px rgba(255, 122, 0, 0.25);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --logo-orange: #FF7A00;
+    --logo-orange-soft: #FFB25C;
+
+    --brand-gradient: linear-gradient(90deg, #FFB25C 0%, #FF9B3D 30%, #FF7A00 55%, #FF8A3D 80%, #FFB25C 100%);
+    --brand-gradient-alt: linear-gradient(135deg, #FFB25C 0%, #FF7A00 40%, #CC5F00 70%, #FF9B3D 100%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, .font-serif, .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--charcoal);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--crimson);
+  border-radius: 3px;
+}
+
+/* ── Reference Headline & Color Keyframe Animations ── */
+@keyframes heroColorPulse {
+  0%, 100% {
+    color: #FFFFFF;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.45);
+  }
+  35% {
+    color: #1E8A44;
+    text-shadow: 0 4px 30px rgba(30,138,68,0.7), 0 0 40px rgba(30,138,68,0.4);
+  }
+  70% {
+    color: #FF7A00;
+    text-shadow: 0 4px 30px rgba(255,122,0,0.55), 0 0 40px rgba(255,122,0,0.28);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% center; }
+  100% { background-position: 100% center; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes waBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes callRing {
+  0%, 100% { transform: rotate(0); }
+  4% { transform: rotate(-15deg); }
+  8% { transform: rotate(12deg); }
+  12% { transform: rotate(-8deg); }
+  16% { transform: rotate(0); }
+}
+
+@keyframes scrollLine {
+  0%, 100% { transform: scaleY(1); opacity: 0.5; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-hero-pulse {
+  animation: heroColorPulse 3.5s ease-in-out infinite;
+}
+
+.animate-wa-bounce {
+  animation: waBounce 2.5s ease-in-out infinite;
+}
+
+.animate-call-ring {
+  animation: callRing 2.5s ease-in-out infinite;
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}
+
+.animate-float {
+  animation: floatGentle 3s ease-in-out infinite;
+}
+
+/* ── Brand Gradient Text ── */
+.brand-gradient-text, .svt-brand {
+  background: var(--brand-gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite alternate;
+  display: inline;
+  font-weight: 800;
+}
+
+/* ── Reference Buttons ── */
+.btn-primary {
+  background: var(--crimson);
+  color: #FFFFFF !important;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 18px rgba(255, 122, 0, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--crimson-light);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 122, 0, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.btn-outline:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--charcoal);
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid rgba(26, 26, 46, 0.25);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-outline-dark:hover {
+  border-color: var(--crimson);
+  color: var(--crimson);
+  transform: translateY(-2px);
+}
+
+/* ── Section Tags & Title Helpers ── */
+.section-tag {
+  display: inline-block;
+  background: rgba(30, 138, 68, 0.1);
+  color: var(--crimson);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(30, 138, 68, 0.2);
+}
+
+.section-tag-dark {
+  display: inline-block;
+  background: rgba(30, 138, 68, 0.25);
+  color: #FFB25C;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(30, 138, 68, 0.45);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-title em {
+  color: var(--crimson);
+  font-style: normal;
+}
+
+.section-sub {
+  color: var(--text-mid);
+  font-size: 0.97rem;
+  line-height: 1.75;
+  max-width: 620px;
+}
+
+/* ── Glass Containers ── */
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.glass-white {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* ── Moving Vehicle Highway Animations ── */
+@keyframes roadDashCruise {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -120px 0;
+  }
+}
+
+@keyframes roadDashSprint {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -240px 0;
+  }
+}
+
+.animate-road-cruise {
+  background-image: repeating-linear-gradient(90deg, #FF7A00 0, #FF7A00 24px, transparent 24px, transparent 48px);
+  background-size: 48px 4px;
+  animation: roadDashCruise 0.6s linear infinite;
+}
+
+.animate-road-sprint {
+  background-image: repeating-linear-gradient(90deg, #FFB703 0, #FFB703 30px, transparent 30px, transparent 60px);
+  background-size: 60px 4px;
+  animation: roadDashSprint 0.28s linear infinite;
+}
+
+.animate-road-white-cruise {
+  background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.7) 0, rgba(255,255,255,0.7) 20px, transparent 20px, transparent 40px);
+  background-size: 40px 2px;
+  animation: roadDashCruise 0.5s linear infinite;
+}
+
+@keyframes windStreakAnim {
+  0% {
+    transform: translateX(120%) scaleX(0.3);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-140%) scaleX(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-wind-streak-1 {
+  animation: windStreakAnim 0.85s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+}
+
+.animate-wind-streak-2 {
+  animation: windStreakAnim 1.1s cubic-bezier(0.2, 0.6, 0.35, 1) infinite 0.35s;
+}
+
+.animate-wind-streak-3 {
+  animation: windStreakAnim 0.95s cubic-bezier(0.2, 0.6, 0.35, 1) infinite 0.6s;
+}
+
+@keyframes suspensionBounceAnim {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  20% {
+    transform: translateY(-2.5px) rotate(-0.3deg);
+  }
+  40% {
+    transform: translateY(1.2px) rotate(0.2deg);
+  }
+  60% {
+    transform: translateY(-1.8px) rotate(-0.15deg);
+  }
+  80% {
+    transform: translateY(0.8px) rotate(0.1deg);
+  }
+}
+
+.animate-suspension {
+  animation: suspensionBounceAnim 1.3s ease-in-out infinite;
+}
+
+.animate-suspension-fast {
+  animation: suspensionBounceAnim 0.75s ease-in-out infinite;
+}
+
+@keyframes headlightConeSweep {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(1) rotate(-1deg);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.08) rotate(1deg);
+  }
+}
+
+.animate-headlight-cone {
+  animation: headlightConeSweep 2s ease-in-out infinite;
+}
+
